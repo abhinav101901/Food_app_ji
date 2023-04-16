@@ -21,7 +21,7 @@ function LogIn() {
             console.log(res.data.data)
             localStorage.setItem("UserId", userId)
             localStorage.setItem("phone",phone)
-            Navigate('/Otplogin')
+            Navigate('/Home')
             window.location.reload(false);
         }).catch((err) => {
             alert(err.response.data.message + err.response.status + " Error")
