@@ -30,7 +30,7 @@ function Menu() {
 	const routeParams = useParams()
 
 	useEffect(() => {
-		axios.get(`https://guptaji-food-backend-production.up.railway.app/getFood/${routeParams.id}`)
+		axios.get(`https://server1-0uv1.onrender.com/getFood/${routeParams.id}`)
 			.then((res) => {
 				setData(res.data.data)
 				console.log(res.data.data)
@@ -44,7 +44,7 @@ function Menu() {
 	}
 
 	function handleClick(foodId) {
-		axios.post(`https://guptaji-food-backend-production.up.railway.app/addInCart/${UserId}`, {
+		axios.post(`https://server1-0uv1.onrender.com/addInCart/${UserId}`, {
 			foodId, quantity
 		})
 			.then((res) => {
@@ -64,7 +64,7 @@ function Menu() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(name)
-		axios.get(`https://guptaji-food-backend-production.up.railway.app/getfoodByname/${name}`)
+		axios.get(`https://server1-0uv1.onrender.com/getfoodByname/${name}`)
 			.then((res) => {
 				setQuery(res.data.data)
 				setSearchData(true)

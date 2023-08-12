@@ -16,7 +16,7 @@ function Cart() {
   const routeParams = useParams() 
   const navigate = useNavigate();
   useEffect(()=>{
-            axios.get(`https://guptaji-food-backend-production.up.railway.app/getCart/${UserId}`)
+            axios.get(`https://server1-0uv1.onrender.com/getCart/${UserId}`)
             .then((res) => {
               setData(res.data.data)
               setItems(res.data.data.items)
@@ -28,7 +28,7 @@ function Cart() {
 	},[])
 
   function handleClick(cartId){
-		axios.post(`https://guptaji-food-backend-production.up.railway.app/placeOrder/${UserId}`, {
+		axios.post(`https://server1-0uv1.onrender.com/placeOrder/${UserId}`, {
            cartId
         })
             .then((res) => {
@@ -41,7 +41,7 @@ function Cart() {
 	}
 
   function handleDelete(){
-    axios.post(`https://guptaji-food-backend-production.up.railway.app/deleteCart/${UserId}`)
+    axios.post(`https://server1-0uv1.onrender.com/deleteCart/${UserId}`)
             .then((res) => {
                 alert(`Check Out Succesfully`)
                 localStorage.removeItem("TotalItems")

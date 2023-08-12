@@ -9,7 +9,8 @@ import Menu from './Component/Pages/Menu';
 import About from './Component/Pages/About';
 import Contact from './Component/Pages/Contact';
 import Footer from './Component/Pages/Footer';
-import Otplogin from './Component/Pages/Otp-login'
+import Otplogin from './Component/Pages/Otplogin'
+
 function App() {
   return (
     <div className="App">

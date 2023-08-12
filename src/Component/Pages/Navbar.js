@@ -6,7 +6,7 @@ import '../styles/Navbar.css'
 const Navbar = () => {
   const Navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("x-api-key"); 
+    localStorage.removeItem("logIn"); 
     localStorage.removeItem("TotalItems")
     Navigate('/Home')
     window.location.reload();// remove token from local storage
@@ -24,8 +24,8 @@ const Navbar = () => {
             {/* <Link className='Menu' to="/getFood">Menu</Link> */}
             {/* <Link className='Menu' to="/SingIn">SingIn</Link> */}
             {/* <Link className='Menu' to="/Cart">Cart</Link> */}
-            {localStorage.getItem("x-api-key") ? <Link className='Menu' to="/Cart">Cart</Link> : <></>}
-            {localStorage.getItem("x-api-key") ? <Link className='Menu' to="/Order">Order</Link> : <></>} 
+            {localStorage.getItem("logIn") ? <Link className='Menu' to="/Cart">Cart</Link> : <></>}
+            {localStorage.getItem("logIn") ? <Link className='Menu' to="/Order">Order</Link> : <></>} 
             <Link className='Menu' to="/About">About</Link>
             <Link className='Menu' to="/Contact">Contact</Link>
         </div> 

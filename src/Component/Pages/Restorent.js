@@ -13,7 +13,7 @@ function Restorent() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetch("https://guptaji-food-backend-production.up.railway.app/getRestorent")
+		fetch("https://server1-0uv1.onrender.com/getRestorent")
 			.then((res) => res.json())
 			.then((json) => {
 				setData(json)
@@ -35,7 +35,7 @@ function Restorent() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(name)
-		axios.get(`https://guptaji-food-backend-production.up.railway.app/getRestorentByname/${name}`)
+		axios.get(`https://server1-0uv1.onrender.com/${name}`)
 			.then((res) => {
 				setQuery(res.data.data)
 				setSearchData(true)
@@ -69,8 +69,7 @@ function Restorent() {
 			{
 		searchData ? (
 			<div className="Contaner">
-				{query.map((item) => {
-					if (true) {
+				{query.map((item) => { 
 						return <div className='contaner-1' key={item._id} >
 							<div className='box'><img src={item.imageResto} alt='Resto' /></div>
 							<div className='detail'>
@@ -85,14 +84,13 @@ function Restorent() {
 								</div>
 							</div>
 						</div>
-					}
+					
 				}
 				)}
 			</div>
 		) : (
 			<div className="Contaner">
 				{data.map((item) => {
-					if (true) {
 						return <div className='contaner-1' key={item._id} >
 							<div className='box'><img src={item.imageResto} alt='Resto' /></div>
 							<div className='detail'>
@@ -107,15 +105,11 @@ function Restorent() {
 								</div>
 							</div>
 						</div>
-					}
 				}
 				)}
 			</div>
 		)
 	}
-
-
-
 		</div >
 	)
 }

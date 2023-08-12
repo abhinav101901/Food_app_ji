@@ -1,6 +1,6 @@
 import { BsFillShieldLockFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import OtpInput from "otp-input-react";
 import { useState } from "react";
 import "react-phone-input-2/lib/style.css";
@@ -9,11 +9,10 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import '../styles/Otp.css'
 
-
-const App = () => {
+const Otplogin = () => {
   const [otp, setOtp] = useState("");
-  const [ph, setPh] = useState(()=>{
-    const saved = "+91 "+localStorage.getItem("phone")
+  const [ph, setPh] = useState(() => {
+    const saved = "+91 " + localStorage.getItem("phone")
     return saved
   });
 
@@ -31,7 +30,7 @@ const App = () => {
           callback: (response) => {
             onSignup();
           },
-          "expired-callback": () => {},
+          "expired-callback": () => { },
         },
         auth
       );
@@ -67,7 +66,7 @@ const App = () => {
         console.log(res);
         setUser(res.user);
         setLoading(false);
-        localStorage.setItem("logIn",res.user)
+        localStorage.setItem("logIn", res.user) 
       })
       .catch((err) => {
         console.log(err);
@@ -83,7 +82,7 @@ const App = () => {
         {user ? (
           <h2 className="text-center text-white font-medium text-2xl">
             {Navigate('/Home')}
-            
+
           </h2>
         ) : (
           <div className="OTP-1">
@@ -93,7 +92,7 @@ const App = () => {
             {showOTP ? (
               <>
                 <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                  
+
                   <BsFillShieldLockFill size={50} />
                 </div>
                 <label
@@ -152,4 +151,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Otplogin;

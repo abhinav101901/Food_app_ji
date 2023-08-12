@@ -11,7 +11,7 @@ function LogIn() {
 
   const userLogIn = function (event) {
     event.preventDefault();
-    axios.post('https://guptaji-food-backend-production.up.railway.app/login', {
+    axios.post('https://server1-0uv1.onrender.com/login', {
          phone
     })
         .then((res) => {
@@ -21,8 +21,7 @@ function LogIn() {
             console.log(res.data.data)
             localStorage.setItem("UserId", userId)
             localStorage.setItem("phone",phone)
-            Navigate('/Home')
-            window.location.reload(false);
+            Navigate('/Otplogin')
         }).catch((err) => {
             alert(err.response.data.message + err.response.status + " Error")
         })
