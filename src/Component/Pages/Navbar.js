@@ -1,10 +1,15 @@
-import React from 'react'
+// Navbar.js
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../Assets/logo.png'
-import '../styles/Navbar.css'
+import '../styles/Navbar.css';
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const Navigate = useNavigate();
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("logIn"); 
     localStorage.removeItem("TotalItems")
@@ -14,26 +19,28 @@ const Navbar = () => {
   };
 
   return (
-    <div className='Nav'>
-        <div className='Nav-logo'>
-        <img src={logo} className="img-logo" alt="brand" />
-        </div>
-        
-        <div className='menu-btn'>
-            <Link className='Menu' to="/">Home</Link>
-            {/* <Link className='Menu' to="/getFood">Menu</Link> */}
-            {/* <Link className='Menu' to="/SingIn">SingIn</Link> */}
-            {/* <Link className='Menu' to="/Cart">Cart</Link> */}
-            {localStorage.getItem("logIn") ? <Link className='Menu' to="/Cart">Cart</Link> : <></>}
-            {localStorage.getItem("logIn") ? <Link className='Menu' to="/Order">Order</Link> : <></>} 
-            <Link className='Menu' to="/About">About</Link>
-            <Link className='Menu' to="/Contact">Contact</Link>
-        </div> 
-        <div className='login-btn'>
-        {localStorage.getItem("logIn") ? <button className='Menu' onClick={handleLogout}>Logout</button> : <Link className='Menu' to="/LogIn">LogIn</Link>}
-        </div>
-    </div>
-  )
-}
+    <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
+      <div className='logo'>
+        <Link to='/'> 🍴 Food_Gupta_Gi 🥘</Link>
+      </div>
 
-export default Navbar
+      <div className={`menu ${menuOpen ? 'open' : ''}`}>
+        <Link to='/'>Home</Link>
+        {localStorage.getItem("logIn") ? <Link className='Menu' to="/Cart">Cart</Link> : <></>}
+        {localStorage.getItem("logIn") ? <Link className='Menu' to="/Order">Order</Link> : <></>}
+        <Link to='/about'>About</Link>
+        <Link to="/Contact">Contact</Link>
+        {localStorage.getItem("logIn") ? <Link className='Menu' onClick={handleLogout}>Logout</Link> : <Link className='Menu' to="/LogIn">LogIn</Link>}
+      </div>
+
+      <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <div className='bar'></div>
+        <div className='bar'></div>
+        <div className='bar'></div>
+        <div className='bar'></div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
